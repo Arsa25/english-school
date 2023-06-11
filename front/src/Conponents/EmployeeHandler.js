@@ -1,9 +1,12 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useMemo } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { API_URL } from "../api"
 import EmployeeContext from "../Context/Context"
 import HeaderTable from "./HeaderTable"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRotate} from "@fortawesome/free-solid-svg-icons" 
+
 
 
 var idArray = []
@@ -11,18 +14,34 @@ var idArray = []
 const EmployeeHandler = () => {
 
     const employeeContext = useContext(EmployeeContext)
-    var a = []
-    a.push(employeeContext.employee)
+    const employee = useMemo(() => employeeContext.employee, [employeeContext.employee]);
+    const [A,setA] = useState(employee)
+
+    useEffect(() => {
+        setA(employee)
+    },[employee])
+
+    const reloadPage = () => { window.location.reload() }   
+    
+    
 
     //filter
+    const [filterInput, setFilterInput] = useState("")
 
-    const submitForm = (a) => {
+    const submitForm = (e) => {
+        e.preventDefault()
+        const inputValue = filterInput
+        const search = employeeContext.employee.filter((elem) =>
 
-        const searchValue = a.value
+            elem.ime.toLowerCase().includes(inputValue.toLowerCase()) ||
+            elem.prezime.toLowerCase().includes(inputValue.toLowerCase()) ||
+            elem.vrtic.toLowerCase().includes(inputValue.toLowerCase()) ||
+            elem.adresa.toLowerCase().includes(inputValue.toLowerCase()) ||
+            elem.email.toLowerCase().includes(inputValue.toLowerCase()) ||
+            elem.telefon.toLowerCase().includes(inputValue.toLowerCase()))
 
-        const search = employeeContext.employee.filter((elem) => { return elem.ime.includes(searchValue) || elem.prezime.includes(searchValue) === searchValue || elem.vrtic.includes(searchValue) === searchValue || elem.adresa.includes(searchValue) === searchValue || elem.email.includes(searchValue) === searchValue || elem.telefon.includes(searchValue) === searchValue })
-        
-        employeeContext.setA(search)
+    
+        setA(search)
     }
     //filter
 
@@ -55,7 +74,7 @@ const EmployeeHandler = () => {
             if (window.confirm("Da li ste sigurni")) {
                 for (let i = 0; i < idArra.length; i++) {
                     axios.delete(`${API_URL}/employee/${idArra[i]}`)
-                    var filtriraj = employeeContext.employee.filter((elem) => elem._id !== id)
+                    var filtriraj = employeeContext.employee.filter((elem) => elem._id !== idArra[i])
                 }
                 employeeContext.setEmployee(filtriraj)
                 idArra = []
@@ -65,6 +84,7 @@ const EmployeeHandler = () => {
             console.log(err);
         }
     }
+    
     //sorting
     const columns = ['ime', 'prezime', 'vrtic', 'adresa', 'email', 'telefon']
     const [sorting, setSorting] = useState({ column: "ime", order: "asc" });
@@ -78,7 +98,7 @@ const EmployeeHandler = () => {
         try {
             if (order === "asc") {
 
-                a[0].sort((a, b) => {
+                A.sort((a, b) => {
 
                     const nameA = a.ime.toUpperCase();
                     const nameB = b.ime.toUpperCase();
@@ -93,7 +113,7 @@ const EmployeeHandler = () => {
                 })
 
             } else {
-                a[0].sort((a, b) => {
+                A.sort((a, b) => {
                     const nameA = a.ime.toUpperCase();
                     const nameB = b.ime.toUpperCase();
                     if (nameA > nameB) {
@@ -120,12 +140,10 @@ const EmployeeHandler = () => {
                 <div className="add_edit">
                     <Link className="btn btn-addprofessor" to={`/AddEmployee`}><p>+ Profesor</p></Link>
                     <form className="search-bar" onSubmit={submitForm}>
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            
-                            onChange={e => submitForm(e.target)} />
+                        <input type="text" placeholder="Search..." value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
                     </form>
+                    <FontAwesomeIcon onClick={reloadPage} icon={faRotate} size="2x" color="#0275d8" />
+
 
                 </div>
                 <table className="table table-hover">
@@ -138,7 +156,7 @@ const EmployeeHandler = () => {
                     </thead>
                     <tbody>
                         {
-                            a[0].map((elem) => (
+                            A.map((elem) => (
                                 <tr key={elem._id}>
                                     {columns.map(column => (
                                         <td key={column}>{elem[column]}</td>

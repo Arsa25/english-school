@@ -10,7 +10,7 @@ import EmployeeContext from "../Context/Context"
 const Employee = () => {
 
     const [employee, setEmployee] = useState([])
-    const [a, setA] = useState([])
+   
 
 
     const fetchEmployee = async () => {
@@ -26,24 +26,10 @@ const Employee = () => {
         fetchEmployee()
     }, [])
 
-    const fetchEmployeeFilter = async (a) => {
-        const zaposleni = a
-        try {
-            for (let i = 0; i < zaposleni.length; i++) {
-                const employee = await axios.get(`${API_URL}/employee/${zaposleni[i]._id}`)
-                setEmployee(employee.data)
-            }
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
-    useEffect(() => {
-        fetchEmployeeFilter()
-    }, [])
 
     return (
         <>
-            <EmployeeContext.Provider value={{ employee, setEmployee, a, setA }}>
+            <EmployeeContext.Provider value={{ employee, setEmployee}}>
                 <EmployeeHeader />
                 <EmployeeHandler />
             </EmployeeContext.Provider>
