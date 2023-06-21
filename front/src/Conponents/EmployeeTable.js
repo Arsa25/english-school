@@ -11,7 +11,7 @@ import { faRotate} from "@fortawesome/free-solid-svg-icons"
 
 var idArray = []
 
-const EmployeeHandler = () => {
+const EmployeeTable = () => {
 
     const employeeContext = useContext(EmployeeContext)
     const employee = useMemo(() => employeeContext.employee, [employeeContext.employee]);
@@ -175,4 +175,4 @@ const EmployeeHandler = () => {
 
 }
 
-export default EmployeeHandler
+export default EmployeeTable

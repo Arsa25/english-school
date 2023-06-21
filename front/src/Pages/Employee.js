@@ -1,5 +1,5 @@
 import EmployeeHeader from "../Conponents/EmployeeHeader"
-import EmployeeHandler from "../Conponents/EmployeeHandler"
+import EmployeeTable from "../Conponents/EmployeeTable"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { API_URL } from "../api"
@@ -31,7 +31,7 @@ const Employee = () => {
         <>
             <EmployeeContext.Provider value={{ employee, setEmployee}}>
                 <EmployeeHeader />
-                <EmployeeHandler />
+                <EmployeeTable />
             </EmployeeContext.Provider>
         </>
     )

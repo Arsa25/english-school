@@ -31,7 +31,7 @@ const AddEmployee = () => {
 
     return (
         <div className="containerEmployeeAdd">
-            <h2>Kreiraj novog profesora:</h2>
+            <h2>Kreiraj novog<br/>profesora:</h2>
 
             <form id="addProfesora" onSubmit={handleChange}>
                 <input type="text" placeholder="Unesite ime" className="input input-ime" onChange={(e) => setEmployee({ ...employee, ime: e.target.value })} />

@@ -12,7 +12,7 @@ body{
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  background-color:#EFFAFD ;
+  background-color:#f1f1f1;
 }
 .container{
   width: 90vw;
@@ -114,9 +114,15 @@ text-decoration: none;
   width: 90vw;
   margin: auto;
 }
+.containerEmployeeAdd{
+  width:fit-content;
+  background-color:#ddd;
+  margin:3% 3% 3% 3%;
+  padding: 1% 3% 3% 3%;
+
+}
 .containerEmployeeAdd h2{
   font-size: 2.4rem;
-  padding-bottom: 20px;
 }
 #addProfesora{
 width: 350px;
@@ -145,7 +151,7 @@ flex-direction: column;
 /* HOME */
 .home_container{
   width: 100%;
-  height: 850px;
+  
 }
 
 .home_menu{
@@ -153,7 +159,7 @@ flex-direction: column;
   display: grid;
   grid-template-columns: auto auto;
   width: fit-content;
-  margin: auto;  
+  margin: 0 auto 0 30vw;  
   border-radius: 50%;
 }
 
