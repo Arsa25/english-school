@@ -1,0 +1,843 @@
+@font-face{
+  font-family:OpenSans;
+  src: url(../OpenSans-VariableFont_wdth\,wght.ttf);
+}
+
+ 
+
+*{
+  box-sizing: border-box;
+  user-select: none;
+  font-family:OpenSans;
+}
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  background-color:#f1f1f1;
+}
+.container{
+  width: 90%;
+  margin: auto;
+  overflow-x: scroll;
+}
+.btn{
+  cursor: pointer;
+}
+.btn-addprofessor{
+  font-size: 1.2em;
+  text-decoration: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;  
+}
+.btn-addprofessor p{
+  margin: 5px 9px;
+}
+
+.table{
+  width: 100%;
+  margin: auto;  
+}
+
+.table-hover{
+  margin-top: 15px;
+}
+thead{
+  background-color: #f1f1f1;
+}
+
+
+.table,th,td {
+  text-align: start;
+  border-bottom: 1px solid #ddd;
+  border-collapse: collapse;
+  padding:10px 7px;
+}
+.table th .span{
+  width: 10px;
+  background-color: #19bb7a;
+  color: green;
+} 
+.btn-delete {
+  font-size: 1em;
+  border-radius: 5px;
+  background-color: #fb4143;
+  color: white;
+  border-style: none;
+  padding: 7px 10px;
+}
+/* header */
+.navbar{
+  width: 100%;
+  background-color: #0275d8 ;
+  border-collapse: collapse;
+}
+.navbar ul li{
+  list-style-type: none;   
+}
+.navbar ul li p{
+  font-size: 1.6rem;
+  margin: 15px 50px;
+  color: white;
+}
+
+.navbar .navigacija {  
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;  
+  margin:0px 0px 50px 0px;
+}
+/* HAMBURGER MANU */
+.navbar .checkbox {
+  position: absolute;
+  display: block;
+  height: 32px;
+  width: 32px;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+.navbar .hamburger-lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.navbar .hamburger-lines .line {
+  display: none;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: white;
+}
+
+.hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hamburger-lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+
+ input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+/* header */
+
+.addNavigacija{
+  display: flex;
+  justify-content: end; 
+}
+.addNavigacija li{
+  padding-left: 40px;
+}
+.navigacija a{
+  color: black;
+text-decoration: none;
+}
+.addNavigacija a{
+  color: black;
+text-decoration: none;
+}
+
+
+.borde{
+  width: 90vw;
+  margin: auto;
+}
+.containerEmployeeAdd{
+  width:fit-content;
+  margin: 50px auto;
+  padding: 1% 3% 3% 3%;
+  box-shadow:0 2px 4px  #d5d4d4;
+ 
+
+}
+#addProfesora{
+width: 350px;
+display: flex;
+flex-direction: column;
+}
+#addProfesora .input{
+  height: 40px;
+  padding-left: 5px;
+  margin-bottom: 30px;
+  font-size: 1.4em;
+  
+}
+
+#addProfesora .submitProfesora{
+  padding: 10px 15px;
+  border-radius: 5px;
+  align-self: center;
+  font-size: 1.4rem;
+  color: white;
+  background-color:#0275d8 ;
+  border:none;
+}
+
+/* HOME */
+.home_container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+}
+
+.home_menu{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
+  width: fit-content;
+  margin: 0 auto 0 30vw;  
+  border-radius: 50%;
+}
+
+
+.home_menu .btn{
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-shadow:0 0 20px #272727;
+}
+
+.home_menu .btn .link{
+  color: whitesmoke;
+  font-weight: bold;
+  font-family: OpenSans;
+  font-size: 32px;
+  text-decoration: none;
+  z-index: 10;
+}
+
+.home_menu .btn_employee{
+  position: relative;
+  top:0;
+  left:0;
+  width: 300px;
+  height: 300px;
+  background-color: #ff652f;
+  border-top-left-radius: 100%;
+  transition-duration: 50ms;
+  border:solid white 1px;
+  opacity: 0.7;
+}
+.home_menu .btn_employee .link{
+  position: relative;
+  bottom: 150px;
+  left: 20px;
+}
+
+.home_menu .btn .img1{
+  position: relative;
+  top: 50px;
+  left: 70px;
+  min-width: 100%;
+  min-height: 100%;
+  flex-shrink: 0;
+  opacity: 0.3;
+}
+ 
+.btn_employee:hover{
+    position: relative;
+    top: -5px;
+    left: -5px;
+    opacity: 1;
+  }
+
+  .home_menu .btn_kindergarden{
+    position: relative;
+    top:0;
+    left:0;
+    width: 300px;  
+    height: 300px;  
+    background-color: #ffe400;
+    border-top-right-radius: 100%;
+    transition-duration: 50ms;   
+    border:solid white 1px;
+    opacity: 0.7;
+  }
+  .home_menu .btn_kindergarden .link{
+    position: relative;
+    bottom: 300px;
+    left: -10px;
+  }
+  .home_menu .btn .img2{
+    position: relative;
+    right: 40px;
+    bottom: 70px;
+    min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 0;
+    opacity: 0.3;
+  }
+
+  .btn_kindergarden:hover{
+  
+    position: relative;
+    top:-5px;
+    left:5px;
+    opacity: 1;
+  }
+
+  .home_menu .btn_map{
+    position: relative;
+    top:0;
+    left:0;
+    width: 300px;
+    height: 300px;
+    background-color: #19bb7a;
+    border-bottom-left-radius: 100%;
+    
+    transition-duration: 50ms;
+    border:solid white 1px;
+    opacity: 0.7;
+  }
+  
+  .home_menu .btn_map .link{
+    position: relative;
+    bottom: 210px;
+    left: 20px;
+  }
+  .home_menu .btn .img3{
+    position: relative;
+    left: 10px;
+    bottom: -70px;
+    width: 330px;
+    flex-shrink: 0;
+    opacity: 0.3;
+  }
+  
+  .btn_map:hover{
+    position: relative;
+    top:5px;
+    left:-5px;
+    opacity: 1;
+  }
+
+  .home_menu .btn_financy{
+    position: relative;
+    top:0;
+    left:0;
+    width: 300px;
+    height: 300px;
+    background-color:#272727;
+    border-bottom-right-radius: 100%;
+    transition-duration: 50ms;
+    border:solid white 1px;
+    opacity: 0.7;
+
+  }
+  .home_menu .btn_financy .link{
+    position: relative;
+    bottom: 230px;
+  }
+  .home_menu .btn .img4{
+    position: relative;
+    top: 50px;
+    right: 20px;
+    flex-shrink: 0;
+    opacity: 0.3;
+  }
+
+  .btn_financy:hover{
+  
+    position: relative;
+    top:5px;
+    left:5px;
+    opacity: 1;
+      }
+
+      .btn_employee:hover .link{
+        font-size: 48px;
+        text-shadow: 2px 2px black;
+        position: relative;
+        bottom: 150px;
+        text-decoration-line: underline;
+        left: 20px;
+      }
+      .btn_kindergarden:hover .link{
+        font-size: 42px;
+        text-decoration-line: underline;
+        text-shadow: 2px 2px black;
+      }
+
+      .btn_map:hover .link{
+        font-size: 52px;
+        text-shadow: 2px 2px black;
+        text-decoration-line: underline;
+
+        
+      }
+
+      .btn_financy:hover .link{
+        font-size: 48px;
+        text-shadow: 2px 2px black;
+        text-decoration-line: underline;
+      }
+
+      .btn:hover .img{
+        opacity: 0.9;
+      }
+      .btn:hover .img1{
+        opacity: 0.9;
+      }
+      .btn:hover .img2{
+        opacity: 0.8;
+      }
+      .btn:hover .img4{
+        opacity: 0.5;
+      }
+      /* home menu */
+td .btn{
+  text-decoration: none;
+  background-color: #0275d8 ;
+  color: white;
+  border-radius: 3px;
+  padding: 6px 9px;
+ 
+}
+.add_edit{
+display: flex;
+
+}
+
+.search-bar{
+  padding-left: 15px;
+  margin-right: 15px;
+}
+.search-bar input{
+  height: 30px;
+  font-size: 1rem;
+}
+
+.containerSign{
+  width: 100%;
+  text-align: center;
+}
+.containerSign_second{
+  width: 30%;
+  padding-top: 100px;
+  margin: auto;
+}
+
+.icon-div{
+  margin: 0 auto;
+}
+.containerSign div{
+  margin-bottom: 1px;
+}
+.containerSign a{
+ text-decoration: none;
+}
+.containerSign #form_signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding:0 15px 15px 15px;
+  box-shadow:0 2px 4px  #d5d4d4;
+  margin-bottom: 0px;
+}
+.containerSign #form_signup .inputlog {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+.containerSign #form_signup .input-ime {
+  margin: 0 15px 0 0;
+  width: 145px;
+  height: 30px;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+.containerSign #form_signup .input-prezime {
+  margin: 0 5px 0 0;
+  width: 140px;
+  height: 30px;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+.inputlog_register{
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 auto;
+  border-radius: 5px;
+  align-self: center;
+  font-size: 1.4rem;
+  color: white;
+  background-color:#0275d8 ;
+
+}
+#form_signup .signup_name{
+  margin: 0 15px 0 0;
+  width: 145px;
+  height: 30px;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+#form_signup .signup_lastName{
+  margin-bottom: 10px;
+  width: 145px;
+  height: 30px;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+.map-container{
+  width: 100%;
+  height: 100vh;
+  
+}
+.kinder_container{
+        width: 90%;
+        margin: 30px auto;
+}
+.kinder_fascikla{
+  width: 100%;
+  padding: 3px 0 15px 20px;
+  margin-bottom: 5px;
+  box-shadow:0 0 1px #272727;
+}
+.kinder_fascikla p{
+  margin-bottom: 3px;
+  font-size: 1.4rem;
+}
+.btn_create_kinder{
+  margin-left: 65px;
+  margin-top: 20px;
+  padding: 0px 40px;
+  font-size: 2rem;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;
+  border: none;  
+}
+.modal-content{
+  position: absolute;
+  top:10%;
+  left: 33%;
+  display: none; 
+  width: 480px;
+  padding: 20px;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  z-index: 1;
+  
+}
+#addProfesora{
+ margin: auto;
+}
+#addProfesora .input {
+  margin-bottom: 15px;
+}
+.modal-content .btn-delete{
+  margin-top: 5px;
+}
+.btn-edit{
+  margin-left: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  background-color: #0275d8 ;
+  color: white;
+  border-style: none;
+  padding: 7px 10px;
+}
+.modal-content-edit{
+  display: none; 
+  width: 480px;
+  padding: 20px;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+@media (max-width:992px){
+
+  .navbar ul li p{
+    margin: 15px auto;
+    color: white;
+  }
+  /* home */
+  .home_container{
+    width: 100%;
+    
+  }
+  
+  .home_menu{
+    padding-top: 20px; 
+    margin:auto;  
+  }
+  
+  
+  .home_menu .btn{
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    box-shadow:0 0 20px #272727;
+  }
+  
+  .home_menu .btn .link{
+    font-size: 24px;
+  }
+  
+  .home_menu .btn_employee{
+    width: 180px;
+    height: 180px;
+  }
+  .home_menu .btn_employee .link{
+    position: relative;
+    bottom: 150px;
+    left: 10px;
+  }
+  
+  .home_menu .btn .img1{
+    position: relative;
+    top: 110px;
+    left: 50px;
+    opacity: 0.7;
+  }
+    .home_menu .btn_kindergarden{
+      width: 180px;  
+      height: 180px;     
+    }
+    .home_menu .btn_kindergarden .link{
+      position: relative;
+      bottom: 305px;
+      left:10px;
+    }
+    .home_menu .btn .img2{
+      
+      opacity: 0.7;
+    }
+  
+    .home_menu .btn_map{
+      width: 180px;
+      height: 180px;    
+    }
+    
+    .home_menu .btn_map .link{
+      bottom: 130px;
+       }
+    .home_menu .btn .img3{
+      bottom: -20px;
+      width: 220px;
+      opacity: 0.5;
+    }
+    .home_menu .btn_financy{
+      width: 180px;
+      height: 180px;
+      opacity: 0.7;
+    }
+    .home_menu .btn_financy .link{
+      position: relative;
+      bottom: 120px;
+    }
+    .home_menu .btn .img4{
+      width: 300px;
+      top: 30px;
+      position: relative;
+      right: 5px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+    /* signIn page */
+    
+    .containerSign_second{
+      width: 40%;
+      padding-top: 100px;
+      margin: auto;
+    
+    }
+    
+}
+  
+@media (max-width:576px){
+  .navbar{
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+  .navbar .navigacija {
+    background-color: #0275d8;
+    padding:0 0 100px 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    height: 100vh;
+    width: 100%;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+  }
+  
+  input[type="checkbox"]:checked ~ .navigacija {
+    transform: translateX(0);
+  }
+  .navbar .hamburger-lines .line {
+    display: block;
+  }
+  /* signIn page */
+    
+  .containerSign_second{
+    width: 50%;
+    padding-top: 100px;
+    margin: auto;
+  }
+  
+  
+}
+@media (max-width:416px){
+  .btn-addprofessor{
+    font-size: 1em;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;  
+    border: none;
+  }
+  .search-bar{
+    padding-left: 15px;
+    margin-right: 15px;
+  }
+  .search-bar input{
+    font-size: 0.8rem;
+    width: 150px;
+  }
+  /* HOME */
+.home_container{
+  width: 100%;
+  
+}
+
+.home_menu{
+  padding-top: 20px; 
+  margin:auto;  
+}
+
+
+.home_menu .btn{
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-shadow:0 0 20px #272727;
+}
+
+.home_menu .btn .link{
+  font-size: 18px;
+}
+
+.home_menu .btn_employee{
+  width: 120px;
+  height: 120px;
+}
+.home_menu .btn_employee .link{
+  position: relative;
+  bottom: 150px;
+  left: 10px;
+}
+
+.home_menu .btn .img1{
+  position: relative;
+  top: 110px;
+  left: 50px;
+  opacity: 0.7;
+}
+  .home_menu .btn_kindergarden{
+    width: 120px;  
+    height: 120px;     
+  }
+  .home_menu .btn_kindergarden .link{
+    position: relative;
+    bottom: 305px;
+    left:10px;
+  }
+  .home_menu .btn .img2{
+    
+    opacity: 0.7;
+  }
+
+  .home_menu .btn_map{
+    width: 120px;
+    height: 120px;    
+  }
+  
+  .home_menu .btn_map .link{
+    bottom: 90px;
+     }
+  .home_menu .btn .img3{
+    bottom: -20px;
+    width: 140px;
+    opacity: 0.5;
+  }
+  .home_menu .btn_financy{
+    width: 120px;
+    height: 120px;
+    opacity: 0.7;
+  }
+  .home_menu .btn_financy .link{
+    position: relative;
+    bottom: 90px;
+  }
+  .home_menu .btn .img4{
+    width: 220px;
+    top: 30px;
+    position: relative;
+    right: 5px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+  
+     
+}
+
+
+
+
+
+
+
+
+
+
+
