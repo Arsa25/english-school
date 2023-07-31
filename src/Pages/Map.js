@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -10,7 +10,6 @@ import {
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-  ComboboxListbox,
 } from "@reach-ui-fork/combobox";
 import "@reach-ui-fork/combobox/styles.css";
 import KindergartensContext from "../Context/ContextKinder";

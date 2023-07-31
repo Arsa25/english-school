@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { Toast } from "bootstrap";
 import axios from "axios";
 import { API_URL } from "../api";
 import KindergartensContext from "../Context/ContextKinder";

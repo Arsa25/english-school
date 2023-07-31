@@ -1,7 +1,3 @@
-import { useState, useEffect, useContext } from "react";
-import axios, { Axios } from "axios";
-import { API_URL } from "../api";
-import EmployeeContext from "../Context/Context";
 import HeaderCell from "./HeaderCell";
 
 
