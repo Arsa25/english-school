@@ -32,7 +32,7 @@ const EditEmployee = () => {
         if (employee.ime !== "" && employee.prezime !== "" && employee.adresa !== "" && employee.email !== "" && employee.telefon !== "" && employee.vrtic !== "") {
             const updateEmployee = axios.put(`${API_URL}/employee/${id}`, employee, { 'Content-Type': 'application/json' })
             // employeeContext.setEmployee(employee)
-            alert("Korisnik je azuriran!")
+            alert("izmenjeno")
             navigate("/employee")
         }
 

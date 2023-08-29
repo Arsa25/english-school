@@ -11,12 +11,12 @@ import Places from './Pages/Map';
 import Kindergartens from './Pages/Kindergartens';
 import MyProvider from './Context/MyProvider';
 import MyProviderKinder from './Context/MyProviderKinder';
-
 function App() {
+  
 
   return (
-    <MyProviderKinder>
-      <MyProvider>
+    <MyProvider>
+      <MyProviderKinder>
         <BrowserRouter>
           <Routes>
             <Route path={"/"} element={<SignIn></SignIn>}></Route>
@@ -31,8 +31,8 @@ function App() {
             {/* <Route path={"/edit"} element={<AddKindergartens></AddKindergartens>}></Route> */}
           </Routes>
         </BrowserRouter>
-      </MyProvider>
-    </MyProviderKinder>
+      </MyProviderKinder>
+    </MyProvider>
   )
 }
 

@@ -1,65 +1,66 @@
-import { useState, useEffect, useContext, useMemo } from "react"
+import HeaderTable from "./HeaderTable"
+import { useState, useEffect, useContext, useMemo, useRef } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
-import { API_URL } from "../api"
-import HeaderTable from "./HeaderTable"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRotate } from "@fortawesome/free-solid-svg-icons"
-import EmployeeContext from "../Context/Context"
-
+import { API_URL } from "../../../api"
+import EmployeeContext from "../../../Context/Context"
 
 
 var idArray = []
 
-const EmployeeTable = () => {
 
+const EmployeeTable = () => {
+    
     const employeeContext = useContext(EmployeeContext)
+    const { setRefreshEmployeeData } = useContext(EmployeeContext);
+
     const employee = useMemo(() => employeeContext.employee, [employeeContext.employee]);
     const [A, setA] = useState(employee)
 
+     // Pozivate funkciju da osvežite podatke
+    
+    
+    const curentFilter = useRef("")
+
     useEffect(() => {
+        setRefreshEmployeeData("true")
         setA(employee)
-    }, [employee])
-
-    const reloadPage = () => { window.location.reload() }
-
+    }, [employee,A])
 
 
     //filter
     const [filterInput, setFilterInput] = useState("")
 
     const submitForm = (e) => {
+
         e.preventDefault()
         const inputValue = filterInput
-        const search = employeeContext.employee.filter((elem) =>
-
-            elem.ime.toLowerCase().includes(inputValue.toLowerCase()) ||
-            elem.prezime.toLowerCase().includes(inputValue.toLowerCase()) ||
-            elem.vrtic.toLowerCase().includes(inputValue.toLowerCase()) ||
-            elem.adresa.toLowerCase().includes(inputValue.toLowerCase()) ||
-            elem.email.toLowerCase().includes(inputValue.toLowerCase()) ||
-            elem.telefon.toLowerCase().includes(inputValue.toLowerCase()))
-
-
-        setA(search)
+        curentFilter.current = inputValue
+        applyFilter()
     }
-    //filter
-
-    const buttonHandler = () => {
-
-        if (idArray.length !== 0) {
-            deleteF(idArray)
-            idArray = []
+    const applyFilter = () => {
+        if (curentFilter.current === "") {
+            setA(employee);
         } else {
-            alert("Prvo oznacite profesora.")
+            const search = employee.filter((elem) =>
+                elem.ime.toLowerCase().includes(curentFilter.current.toLowerCase()) ||
+                elem.prezime.toLowerCase().includes(curentFilter.current.toLowerCase()) ||
+                elem.vrtic.toLowerCase().includes(curentFilter.current.toLowerCase()) ||
+                elem.adresa.toLowerCase().includes(curentFilter.current.toLowerCase()) ||
+                elem.email.toLowerCase().includes(curentFilter.current.toLowerCase()) ||
+                elem.telefon.toLowerCase().includes(curentFilter.current.toLowerCase())
+            );
+            setA(search);
         }
     }
 
+    //delete
     const counterCheckBox = (id) => {
         try {
-            const check = idArray.find(elem => elem._id === id)
-            if (check) {
-                let newIdArray = idArray.filter(elem => elem._id !== check)
+            const checkArray = idArray
+            const check = checkArray.find((elem) => elem === id)
+            if (check !== undefined) {
+                let newIdArray = idArray.filter((elem) => elem !== check)
                 idArray = newIdArray
             }
             else {
@@ -68,16 +69,27 @@ const EmployeeTable = () => {
         } catch (err) { console.log(err); }
     }
 
+    const buttonHandler = () => {
+
+        if (idArray.length !== 0) {
+            deleteF(idArray)
+        } else {
+            alert("Prvo oznacite profesora.")
+        }
+    }
+
     const deleteF = async (id) => {
         let idArra = id
         try {
             if (window.confirm("Da li ste sigurni")) {
                 for (let i = 0; i < idArra.length; i++) {
                     axios.delete(`${API_URL}/employee/${idArra[i]}`)
-                    var filtriraj = employeeContext.employee.filter((elem) => elem._id !== idArra[i])
+                    // var filter = employeeContext.employee.filter((elem) => elem._id !== idArra[i])
                 }
-                employeeContext.setEmployee(filtriraj)
+                // setA(filter)
                 idArra = []
+                idArray = []
+                setA(employee)
             }
         }
         catch (err) {
@@ -90,49 +102,9 @@ const EmployeeTable = () => {
     const [sorting, setSorting] = useState({ column: "ime", order: "asc" });
     const sortTable = (newSorting) => {
         setSorting(newSorting)
-        sortFunction(sorting.column, sorting.order)
     }
-    //sort funkcija
-    const sortFunction = (column, order) => {
 
-        try {
-            if (order === "asc") {
-
-                A.sort((a, b) => {
-
-                    const nameA = a.ime.toUpperCase();
-                    const nameB = b.ime.toUpperCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-
-                    return 0;
-                })
-
-            } else {
-                A.sort((a, b) => {
-                    const nameA = a.ime.toUpperCase();
-                    const nameB = b.ime.toUpperCase();
-                    if (nameA > nameB) {
-                        return -1;
-                    }
-                    if (nameA < nameB) {
-                        return 1;
-                    }
-
-                    return 0;
-                })
-            }
-
-        }
-        catch (err) { console.log(err); }
-
-    }
     // newEmployeeContext.ime && newEmployeeContext.prezime && newEmployeeContext.vrtic && newEmployeeContext.adresa && newEmployeeContext.email && 
-    //sorting
     return (
         <>
             <div className="container">
@@ -142,14 +114,12 @@ const EmployeeTable = () => {
                     <form className="search-bar" onSubmit={submitForm}>
                         <input type="text" placeholder="Search..." value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
                     </form>
-                    <FontAwesomeIcon onClick={reloadPage} icon={faRotate} size="2x" color="#0275d8" />
-
 
                 </div>
                 <table className="table table-hover">
                     <thead>
                         <tr>
-                            <HeaderTable columns={columns} sorting={sorting} sortTable={sortTable} sortFunction={sortFunction} />
+                            <HeaderTable A={A} setA={setA} columns={columns} sorting={sorting} sortTable={sortTable} />
                             <th><button className="btn btn-delete" onClick={buttonHandler}>Delete</button></th>
 
                         </tr>

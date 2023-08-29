@@ -502,16 +502,19 @@ display: flex;
   background-color:#0275d8 ;
 
 }
+#form_signup div{
+ display: flex;
+}
 #form_signup .signup_name{
   margin: 0 15px 0 0;
-  width: 145px;
+  width: 50%;
   height: 30px;
   font-size: 1.2rem;
   padding-left: 10px;
 }
 #form_signup .signup_lastName{
   margin-bottom: 10px;
-  width: 145px;
+  width: 50%;
   height: 30px;
   font-size: 1.2rem;
   padding-left: 10px;

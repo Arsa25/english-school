@@ -1,10 +1,10 @@
+import EmployeeHeader from "../Conponents/Employee_components/EmployeeHeader";
 import { useState, useEffect, useContext, useMemo } from "react";
 import axios from "axios";
 import { API_URL } from "../api";
 import KindergartensContext from "../Context/ContextKinder";
 import Modal from "../Conponents/CreateKinder";
-import EmployeeHeader from "../Conponents/EmployeeHeader";
-import ModalEdit from "../Conponents/KindergartensEdit";
+import ModalEdit from "../Conponents/EditKinder";
 
 const Kindergartens = () => {
 

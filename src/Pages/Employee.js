@@ -1,20 +1,12 @@
-import EmployeeHeader from "../Conponents/EmployeeHeader"
-import EmployeeTable from "../Conponents/EmployeeTable"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { API_URL } from "../api"
-import EmployeeContext from "../Context/Context"
-
-
+import EmployeeHeader from "../Conponents/Employee_components/EmployeeHeader"
+import EmployeeTable from "../Conponents/Employee_components/EmployeeTable/EmployeeTable"
 
 const Employee = () => {    
 
     return (
         <>
-            
-                <EmployeeHeader />
+                <EmployeeHeader/>
                 <EmployeeTable />
-            
         </>
     )
 }

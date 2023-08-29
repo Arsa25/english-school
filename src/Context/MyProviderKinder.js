@@ -17,7 +17,7 @@ const MyProviderKinder = ({ children }) => {
     }
     useEffect(() => {
         fetchKindergartens()
-    },[kindergartens])
+    },[])
 
     return (
         <KindergartensContext.Provider value={{kindergartens, setKindergartens}}>{children}</KindergartensContext.Provider>

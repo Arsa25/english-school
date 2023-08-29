@@ -27,7 +27,7 @@ const Modal = () => {
             kinder.email !== "" &&
             kinder.manager !== "") {
             createKinder(kinder)
-            alert("Korisnik je kreiran!")
+            alert("Vrtic je kreiran!")
             onClose()
         }
     }
