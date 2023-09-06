@@ -12,6 +12,7 @@ const HeaderTable = ({ columns, sorting, sortTable,A,setA}) => {
 
                     <HeaderCell A={A} setA={setA} column={column} sorting={sorting} key={column} sortTable={sortTable}/>
                     ))}
+                     
             </>
 
 

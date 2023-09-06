@@ -5,6 +5,7 @@ import KindergartensContext from "../Context/ContextKinder"
 
 const Modal = () => {
 
+    const { setRefreshKindergartensData } = useContext(KindergartensContext);
     const [kinder, setKinder] = useState({ name: "", code: "", address: { city: "", cityhall: "", street: "" }, phone: "", email: "", manager: "" })
 
     const createKinder = async (data) => {
@@ -27,6 +28,7 @@ const Modal = () => {
             kinder.email !== "" &&
             kinder.manager !== "") {
             createKinder(kinder)
+            setRefreshKindergartensData("false")
             alert("Vrtic je kreiran!")
             onClose()
         }

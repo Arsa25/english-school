@@ -7,6 +7,7 @@ const Employee = () => {
         <>
                 <EmployeeHeader/>
                 <EmployeeTable />
+                <footer className="footer"></footer>
         </>
     )
 }

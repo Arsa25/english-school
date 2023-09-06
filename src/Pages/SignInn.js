@@ -81,6 +81,7 @@ const Login = () => {
                 <div className="col-12">
                 </div>
                 <Link to={`/SignUp`}><p>Don't have an account ? Sign Up</p></Link>
+               
             </div>
         </div>
     )

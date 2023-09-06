@@ -29,6 +29,7 @@ function App() {
             <Route path={"/kindergartens"} element={<Kindergartens></Kindergartens>}></Route>
             {/* <Route path={"/create"} element={<AddCityhall></AddCityhall>}></Route> */}
             {/* <Route path={"/edit"} element={<AddKindergartens></AddKindergartens>}></Route> */}
+            
           </Routes>
         </BrowserRouter>
       </MyProviderKinder>

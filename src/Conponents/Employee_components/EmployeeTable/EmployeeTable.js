@@ -4,28 +4,27 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import { API_URL } from "../../../api"
 import EmployeeContext from "../../../Context/Context"
+import { logDOM } from "@testing-library/react"
 
 
 var idArray = []
 
 
+
 const EmployeeTable = () => {
-    
+
     const employeeContext = useContext(EmployeeContext)
     const { setRefreshEmployeeData } = useContext(EmployeeContext);
 
     const employee = useMemo(() => employeeContext.employee, [employeeContext.employee]);
     const [A, setA] = useState(employee)
 
-     // Pozivate funkciju da osvežite podatke
-    
-    
     const curentFilter = useRef("")
 
     useEffect(() => {
         setRefreshEmployeeData("true")
         setA(employee)
-    }, [employee,A])
+    }, [employee])
 
 
     //filter
@@ -89,7 +88,7 @@ const EmployeeTable = () => {
                 // setA(filter)
                 idArra = []
                 idArray = []
-                setA(employee)
+                setRefreshEmployeeData("false")
             }
         }
         catch (err) {
@@ -121,7 +120,7 @@ const EmployeeTable = () => {
                         <tr>
                             <HeaderTable A={A} setA={setA} columns={columns} sorting={sorting} sortTable={sortTable} />
                             <th><button className="btn btn-delete" onClick={buttonHandler}>Delete</button></th>
-
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

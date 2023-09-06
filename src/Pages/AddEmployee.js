@@ -24,7 +24,7 @@ const AddEmployee = () => {
         
         if (employee.ime !== "" && employee.prezime !== "" && employee.adresa !== "" && employee.email !== "" && employee.telefon !== "" && employee.vrtic !== "") {
             createEmployee(employee)
-            setRefreshEmployeeData("true")
+            setRefreshEmployeeData("false")
             alert("Profesor je kreiran!")
             navigate("/employee")
         }

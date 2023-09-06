@@ -6,7 +6,8 @@ import EmployeeContext from "../Context/Context"
 
 const EditEmployee = () => {
     // const employeeContext = useContext(EmployeeContext)
-
+    
+    const { setRefreshEmployeeData } = useContext(EmployeeContext);
     const [employee, setEmployee] = useState({ ime: "", prezime: "", adresa: "", email: "", telefon: "", vrtic: "" })
     const navigate = useNavigate();
     const { id } = useParams();
@@ -31,7 +32,7 @@ const EditEmployee = () => {
         
         if (employee.ime !== "" && employee.prezime !== "" && employee.adresa !== "" && employee.email !== "" && employee.telefon !== "" && employee.vrtic !== "") {
             const updateEmployee = axios.put(`${API_URL}/employee/${id}`, employee, { 'Content-Type': 'application/json' })
-            // employeeContext.setEmployee(employee)
+            setRefreshEmployeeData("false")
             alert("izmenjeno")
             navigate("/employee")
         }

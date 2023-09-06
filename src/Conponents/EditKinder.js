@@ -1,12 +1,14 @@
 import { useState, useEffect, useContext,useRef } from "react"
 import axios from "axios"
 import { API_URL } from "../api"
+import KindergartensContext from "../Context/ContextKinder"
 
 
 const ModalEdit = ({ id }) => {
-    const modalRef = useRef(null);
-    // const employeeContext = useContext(EmployeeContext)
 
+    // const employeeContext = useContext(EmployeeContext)
+    const { setRefreshKindergartensData } = useContext(KindergartensContext);
+    const modalRef = useRef(null);
     const [kinder, setKinder] = useState({ name: "", code: "", address: { city: "", cityhall: "", street: "" }, phone: "", email: "", manager: "" })
 
 
@@ -24,6 +26,9 @@ const ModalEdit = ({ id }) => {
         fetchKinder()
     }, [id])
 
+    const reload = () => {
+        window.location.reload()
+    }
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -37,6 +42,8 @@ const ModalEdit = ({ id }) => {
             kinder.email !== "" &&
             kinder.manager !== "") {
             const updateKinder = axios.put(`${API_URL}/kindergartens/${id}`, kinder, { 'Content-Type': 'application/json' })
+            setRefreshKindergartensData("false")
+            reload()
             alert("Vrtic je azuriran!")
             onClose()
         }
@@ -79,7 +86,7 @@ const ModalEdit = ({ id }) => {
                         <input className="submitProfesora" type="submit" />
                     </form>
 
-                    <button className="btn-delete" onClick={() => modalRef.current.style.display = "none"}>
+                    <button className="zatvoriBtn" onClick={() => modalRef.current.style.display = "none"}>
                         Zatvori
                     </button>
 

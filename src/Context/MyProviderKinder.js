@@ -4,7 +4,7 @@ import { API_URL } from '../api'
 import KindergartensContext from './ContextKinder'
 
 const MyProviderKinder = ({ children }) => {
-
+    const [refreshKindergartensData, setRefreshKindergartensData] = useState("false")
     const [kindergartens,setKindergartens] = useState([])
 
     const fetchKindergartens = async () => {
@@ -16,11 +16,14 @@ const MyProviderKinder = ({ children }) => {
         }
     }
     useEffect(() => {
-        fetchKindergartens()
-    },[])
+        if (refreshKindergartensData === "false") {
+            fetchKindergartens()
+            setRefreshKindergartensData("true")
+        }
+    },[refreshKindergartensData])
 
     return (
-        <KindergartensContext.Provider value={{kindergartens, setKindergartens}}>{children}</KindergartensContext.Provider>
+        <KindergartensContext.Provider value={{kindergartens, setKindergartens,refreshKindergartensData, setRefreshKindergartensData}}>{children}</KindergartensContext.Provider>
     )
 }
 

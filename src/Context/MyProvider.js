@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 
 const MyProvider = ({ children }) => {
 
-    const [refreshEmployeeData, setRefreshEmployeeData] = useState("true");
+    const [refreshEmployeeData, setRefreshEmployeeData] = useState("false");
     const [employee, setEmployee] = useState([])
 
     const shareData = async () => {
@@ -18,9 +18,9 @@ const MyProvider = ({ children }) => {
     }
     
     useEffect(() => {
-        if (refreshEmployeeData==="true") {
+        if (refreshEmployeeData==="false") {
             shareData();
-            setRefreshEmployeeData("false");
+            setRefreshEmployeeData("true");
         }
     }, [refreshEmployeeData]);
     

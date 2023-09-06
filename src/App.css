@@ -12,15 +12,24 @@
 }
 body{
   margin: 0;
-  padding: 0;
+  padding:0;
   box-sizing: border-box;
   width: 100%;
   background-color:#f1f1f1;
 }
+.img_background{
+  position: fixed;
+  min-width: 100%;
+  z-index: -1;
+  opacity: 0.3;
+}
 .container{
   width: 90%;
   margin: auto;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
+}
+.container tbody tr:nth-child(odd){
+  background-color: rgba(255, 255, 224, 0.483);
 }
 .btn{
   cursor: pointer;
@@ -50,6 +59,8 @@ thead{
 
 
 .table,th,td {
+  font-size: 1.2rem;
+  font-weight: 500;
   text-align: start;
   border-bottom: 1px solid #ddd;
   border-collapse: collapse;
@@ -194,11 +205,20 @@ flex-direction: column;
 
 #addProfesora .submitProfesora{
   padding: 10px 15px;
+  margin-bottom: 5px;
   border-radius: 5px;
   align-self: center;
   font-size: 1.4rem;
   color: white;
   background-color:#0275d8 ;
+  border:none;
+}
+.zatvoriBtn{
+  background-color: #fb4143;
+  color: white;
+  font-size: 1.4rem;
+  padding: 10px 15px;
+  border-radius: 5px;
   border:none;
 }
 
@@ -534,13 +554,15 @@ display: flex;
   margin-bottom: 5px;
   box-shadow:0 0 1px #272727;
 }
+.kinder_fascikla h2{
+ text-decoration: underline;
+}
 .kinder_fascikla p{
   margin-bottom: 3px;
   font-size: 1.4rem;
 }
 .btn_create_kinder{
   margin-left: 65px;
-  margin-top: 20px;
   padding: 0px 40px;
   font-size: 2rem;
   background-color: #28a745;
@@ -568,6 +590,8 @@ display: flex;
   margin-bottom: 15px;
 }
 .modal-content .btn-delete{
+  padding: 10px 15px;
+  font-size: 1.4rem;
   margin-top: 5px;
 }
 .btn-edit{
@@ -587,6 +611,14 @@ display: flex;
   border-radius: 0;
   text-align: center;
   z-index: 1;
+}
+footer{
+  width: 100%;
+  height: 35px;
+  background-color: #272727;
+  position:fixed;
+  bottom: 0px;
+  opacity: 0.9;
 }
 
 @media (max-width:992px){

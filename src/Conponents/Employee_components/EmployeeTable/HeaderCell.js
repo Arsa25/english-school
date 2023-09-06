@@ -46,7 +46,8 @@ try {
             return 0;
         })
     }
-    
+    console.log(sortedArray);
+    setA(sortedArray);
 }
 catch (err) { console.log(err); }
 
