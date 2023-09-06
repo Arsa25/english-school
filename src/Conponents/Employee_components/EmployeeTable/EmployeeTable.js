@@ -6,10 +6,7 @@ import { API_URL } from "../../../api"
 import EmployeeContext from "../../../Context/Context"
 import { logDOM } from "@testing-library/react"
 
-
 var idArray = []
-
-
 
 const EmployeeTable = () => {
 
@@ -25,7 +22,6 @@ const EmployeeTable = () => {
         setRefreshEmployeeData("true")
         setA(employee)
     }, [employee])
-
 
     //filter
     const [filterInput, setFilterInput] = useState("")
